@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import {GoogleApiWrapper} from 'google-maps-react';
+import Map from './Map';
 
 class App extends Component {
   render() {
@@ -14,6 +14,9 @@ class App extends Component {
         <p className="App-intro">
          jjjj To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+       
+          <Map/>
+       
       </div>
     );
   }
