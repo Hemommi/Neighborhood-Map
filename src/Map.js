@@ -12,7 +12,7 @@ class Map extends Component {
         if(isScriptLoaded && !this.props.isScriptLoaded) {
             if(isScriptLoadSucceed) {
             this.map = new window.google.maps.Map(this.refs.map, {
-                center: {lat: 35.2030728, lng: -80.9799138},
+                center: {lat: 35.2247583, lng: -80.8531362},
                 zoom: 15,
             });
         }else{
