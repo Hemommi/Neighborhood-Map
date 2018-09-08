@@ -5,21 +5,33 @@ class Map extends Component {
     //super- access the constructor method of the parent class. Props is included to access this.props inside of constructor.//
     constructor(props) {
         super(props);
-        this.map = null;  
+        this.map = null; 
+        this.marker; 
     }
-    //I used window.google because google now in global scope//
+    //A decorator for script lazy loading on react component.//
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
         if(isScriptLoaded && !this.props.isScriptLoaded) {
             if(isScriptLoadSucceed) {
-            this.map = new window.google.maps.Map(this.refs.map, {
-                center: {lat: 35.2247583, lng: -80.8531362},
-                zoom: 15,
-            });
-        }else{
-            alert('Script is not loaded')
+                this.map = new window.google.maps.Map(this.refs.map, {
+                    center: {lat: 35.2247583, lng: -80.8531362},
+                    zoom: 15,
+                });
+                this.markers();
+            }else{
+                alert('Script is not loaded')
+            }
         }
     }
-}
+    markers() {
+       let test =this.props.markers;
+            var position = {lat: 35.1017389, lng: -80.9502442};
+            this.marker= new window.google.maps.Marker({
+                position: position,
+                map: this.map
+            });
+        
+    }
+    
     render() {
         return(
             <div>
