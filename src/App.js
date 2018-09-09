@@ -12,6 +12,17 @@ import PlacesList from './PlacesList'
 //library.add(faStroopwafel)
 
 class App extends Component {
+
+  state = {
+    places:[]
+  } 
+
+  placesChanged = (filtredPlaces) => {
+    this.setState({
+      places: filtredPlaces
+    });
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -19,8 +30,8 @@ class App extends Component {
         <div className="sidebar-title">
             <h3>Neighborhood Map</h3>
         </div>
-        <Search places={myPlaces}/>
-        <PlacesList places={myPlaces}/>
+        <Search places={myPlaces} placesChanged={this.placesChanged}/>
+        <PlacesList places={this.state.places}/>
         </nav>
         <div id="content">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
