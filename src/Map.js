@@ -23,15 +23,19 @@ class Map extends Component {
         }
     }
     markers() {
-       let test =this.props.markers;
-            var position = {lat: 35.1017389, lng: -80.9502442};
-            this.marker= new window.google.maps.Marker({
-                position: position,
-                map: this.map
-            });
-        
+        if(this.props.markers){
+            this.props.markers.map(marker => {
+                    // var position = {lat: 35.1017389, lng: -80.9502442};
+                    var myPlaces = marker.position
+                    this.marker= new window.google.maps.Marker({
+                        position: new window.google.maps.LatLng(marker.position),
+                        map: this.map
+                    });
+            });   
+        }
     }
-    
+
+
     render() {
         return(
             <div>
