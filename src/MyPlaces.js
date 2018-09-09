@@ -30,7 +30,7 @@ export const myPlaces = [
         address: "4330 Westmont Dr, Charlotte, NC 28217" 
     },
     {
-        name: "Levine Museum of the New South",
+        title: "Levine Museum of the New South",
         position: {lat:35.2281189, lng: -80.840919},
         address: "200 E 7th St, Charlotte, NC 28202" 
     },

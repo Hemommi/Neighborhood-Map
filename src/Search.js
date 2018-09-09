@@ -10,16 +10,6 @@ class Search extends React.Component {
                     <button type="submit">go</button>
                     </div>
                  </div>
-                 <div className="search-results">
-                 <ol className="places-list">
-                    {this.props.places.map((myPlaces) => ( 
-                        <li>
-                            {myPlaces.title}
-                        </li>
-                    ))}
-                    
-                 </ol>
-                 </div>
             </div>
         )
     }

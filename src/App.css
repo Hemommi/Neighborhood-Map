@@ -42,7 +42,7 @@
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: rgb(212, 212, 214);
+  background: rgb(158, 158, 158);
   color: #fff;
   transition: all 0.4s;
 }
@@ -53,7 +53,7 @@
 button {
   width: 20%;
   padding: 5px;
-  background: rgb(10, 87, 150);
+  background: rgb(53, 172, 202);
   margin: 5px;
   color: white;
   font-size: 17px;
@@ -68,4 +68,11 @@ input {
   margin: 5px;
   width: 70%;
   background: #f1f1f1;
+}
+#places-list {
+  background-color:rgb(83, 145, 238);
+  font-size: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
 }
