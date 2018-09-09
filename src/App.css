@@ -42,11 +42,30 @@
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #7386D5;
+  background: rgb(212, 212, 214);
   color: #fff;
-  transition: all 0.3s;
+  transition: all 0.4s;
 }
 #sidebar .sidebar-title {
     padding: 20px;
-    background: #51b943;
+    background: #b2b2b3;
+}
+button {
+  width: 20%;
+  padding: 5px;
+  background: rgb(10, 87, 150);
+  margin: 5px;
+  color: white;
+  font-size: 17px;
+  border: 1px solid rgb(105, 105, 105);
+  
+  cursor: pointer;
+}
+input {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid grey;
+  margin: 5px;
+  width: 70%;
+  background: #f1f1f1;
 }

@@ -5,6 +5,7 @@ import Map from './Map';
 import {myPlaces} from './MyPlaces'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Search from './Search'
 // import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 //library.add(faStroopwafel)
@@ -17,7 +18,7 @@ class App extends Component {
         <div className="sidebar-title">
             <h3>Neighborhood Map</h3>
         </div>
-        
+        <Search places={myPlaces}/>
         </nav>
         <div id="content">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
