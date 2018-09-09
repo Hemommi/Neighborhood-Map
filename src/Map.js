@@ -35,12 +35,11 @@ class Map extends Component {
         }
     }
 
-
     render() {
         return(
-            <div>
-                <div  ref="map"  style={{height:"500px", width:"500px"}}></div>
-            </div>
+         
+                <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}}></div>
+            
         ) 
     }
 }
