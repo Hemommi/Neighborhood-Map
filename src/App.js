@@ -14,7 +14,7 @@ import PlacesList from './PlacesList'
 class App extends Component {
 
   state = {
-    places:[]
+    places: myPlaces
   } 
 
   placesChanged = (filtredPlaces) => {
@@ -42,7 +42,7 @@ class App extends Component {
                   </button>
               </div>
           </nav>
-          <Map markers={myPlaces}/>
+          <Map markers={this.state.places} />
         </div>
       </div>
     );

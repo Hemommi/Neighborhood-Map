@@ -16,16 +16,15 @@ class Map extends Component {
                     center: {lat: 35.2247583, lng: -80.8531362},
                     zoom: 15,
                 });
-                this.markers();
+                this.addMarkers();
             }else{
                 alert('Script is not loaded')
             }
         }
     }
-    markers() {
+    addMarkers() {
         if(this.props.markers){
             this.props.markers.map(marker => {
-                    // var position = {lat: 35.1017389, lng: -80.9502442};
                     var myPlaces = marker.position
                     this.marker= new window.google.maps.Marker({
                         position: new window.google.maps.LatLng(marker.position),
@@ -35,10 +34,11 @@ class Map extends Component {
         }
     }
 
+    removeMarkers() {}
+
     render() {
         return(
-         
-                <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}}></div>
+            <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}}></div>
             
         ) 
     }

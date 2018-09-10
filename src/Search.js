@@ -10,18 +10,18 @@ class Search extends React.Component {
     
     updateQuery = (newquery) => {
         this.setState({ query: newquery });
-        this.filterPlaces();
+        this.filterPlaces(newquery);
     }
 
-    filterPlaces() {
+    filterPlaces=(newquery) => {
         let newPlaces;
-        if(this.state.query) {
-            const match = new RegExp(escapeRegExp(this.state.query), 'i')
+        if(newquery) {
+            const match = new RegExp(escapeRegExp(newquery), 'i')
             newPlaces = this.props.places.filter((myPlaces) => match.test(myPlaces.title))
         }else{
             newPlaces = this.props.places;
         }
-            this.props.placesChanged(newPlaces);
+        this.props.placesChanged(newPlaces);
     }
 
     render(){  
