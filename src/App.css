@@ -30,7 +30,6 @@
 #content {
   width: 100%;
   min-height: 100vh;
-
 }
 
 .wrapper {
@@ -42,13 +41,13 @@
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: rgb(158, 158, 158);
+  background: rgb(138, 138, 138);
   color: #fff;
   transition: all 0.4s;
 }
 #sidebar .sidebar-title {
     padding: 20px;
-    background: #b2b2b3;
+    background: #6c6c6d;
 }
 button {
   width: 20%;
@@ -57,14 +56,14 @@ button {
   margin: 5px;
   color: white;
   font-size: 17px;
-  border: 1px solid rgb(105, 105, 105);
+  border: 1px solid rgb(82, 82, 82);
   
   cursor: pointer;
 }
 input {
   padding: 10px;
   font-size: 18px;
-  border: 1px solid grey;
+  border: 1px solid rgb(70, 69, 69);
   margin: 5px;
   width: 70%;
   background: #f1f1f1;
@@ -75,4 +74,7 @@ input {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 3px;
+}
+#container-fluid {
+  background: rgb(138, 138, 138);
 }

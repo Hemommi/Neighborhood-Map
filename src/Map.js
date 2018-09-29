@@ -8,13 +8,13 @@ class Map extends Component {
         this.map = null; 
         this.marker; 
     }
-    //A decorator for script lazy loading on react component.//
+    //*A decorator for script lazy loading on react component.*//
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
         if(isScriptLoaded && !this.props.isScriptLoaded) {
             if(isScriptLoadSucceed) {
                 this.map = new window.google.maps.Map(this.refs.map, {
                     center: {lat: 35.2247583, lng: -80.8531362},
-                    zoom: 15,
+                    zoom: 11,
                 });
                 this.addMarkers();
             }else{
@@ -22,11 +22,12 @@ class Map extends Component {
             }
         }
     }
+    //*Markers added to the map*//
     addMarkers() {
         if(this.props.markers){
             this.props.markers.map(marker => {
-                    var myPlaces = marker.position
-                    this.marker= new window.google.maps.Marker({
+                    var myPlaces=marker.position
+                    this.marker=new window.google.maps.Marker({
                         position: new window.google.maps.LatLng(marker.position),
                         map: this.map
                     });
@@ -34,13 +35,22 @@ class Map extends Component {
         }
     }
 
-    removeMarkers() {}
+    // removeMarkers() {
+    //     if(this.props.markers){
+    //         this.props.markers.map(marker => marker.remove());
+    //     }
+    //     this.marker=[];
+    //  }
+
+    // removeMarkers(){
+    //     addMarkers(null);
+    // }
 
     render() {
         return(
-            <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}}></div>
-            
-        ) 
+            //*Aria application role for users with low vision*//
+            <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}} role="application" aria-hidden="true"></div> 
+        )
     }
 }
 export default scriptLoader(

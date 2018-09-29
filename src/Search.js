@@ -27,9 +27,10 @@ class Search extends React.Component {
     render(){  
         return(
             <div className="search">
-                <div className="search-bar">
-                    <div className="search-input-wrapper">
+                <div className="search-bar" role="search">
+                    <div className="search-input-wrapper" role="search">
                         <input 
+                            aria-label="search text"
                             type="text" 
                             placeholder="Search by name"
                             value={this.state.query}
