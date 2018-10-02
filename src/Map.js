@@ -6,7 +6,7 @@ class Map extends Component {
     constructor(props) {
         super(props);
         this.map = null; 
-        this.marker; 
+        this.markers = []; 
     }
     //*A decorator for script lazy loading on react component.*//
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
@@ -24,29 +24,47 @@ class Map extends Component {
     }
     //*Markers added to the map*//
     addMarkers() {
-        if(this.props.markers){
-            this.props.markers.map(marker => {
-                    var myPlaces=marker.position
-                    this.marker=new window.google.maps.Marker({
-                        position: new window.google.maps.LatLng(marker.position),
-                        map: this.map
+        if(this.props.places){
+            this.props.places.map(place => {
+                    var myPlaces=place.position
+                    let marker=new window.google.maps.Marker({
+                        position: new window.google.maps.LatLng(place.position),
+                        map: this.map,
+                        title: place.title,
+                        // draggable: true,
+                        // animation: google.maps.Animation.DROP,
                     });
-            });   
+                    this.markers.push(marker);
+            });  
+            //   google.maps.addListener(marker, 'click', toggleBounce());
         }
     }
 
-    // removeMarkers() {
-    //     if(this.props.markers){
-    //         this.props.markers.map(marker => marker.remove());
+    //  toggleBounce() {
+    //       if (this.getAnimation() !== null) {
+    //        this.setAnimation(null);
+    //       } else {
+    //         this.setAnimation(google.maps.Animation.BOUNCE);
+    //       }
     //     }
-    //     this.marker=[];
-    //  }
 
-    // removeMarkers(){
-    //     addMarkers(null);
-    // }
 
     render() {
+
+        //*.setVisible() method*//
+        // let places = this.props.places;
+        // let markers = this.markers;
+        //   if(this.markers.length){
+        //     markers.map(marker => {
+        //         let marker = this.markers.find(marker => {
+        //             return 
+        //     }) 
+        // })
+        //      this.markers.setVisible(true);
+        //  } else {
+        //      this.markers.setVisible(false);
+        //  }
+
         return(
             //*Aria application role for users with low vision*//
             <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}} role="application" aria-hidden="true"></div> 

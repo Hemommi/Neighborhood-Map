@@ -42,7 +42,7 @@ class App extends Component {
                   </button>
               </div>
           </nav>
-          <Map markers={this.state.places} />
+          <Map places={this.state.places} />
         </div>
       </div>
     );

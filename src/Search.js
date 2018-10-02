@@ -13,6 +13,7 @@ class Search extends React.Component {
         this.filterPlaces(newquery);
     }
 
+    //*Filter Places*//
     filterPlaces=(newquery) => {
         let newPlaces;
         if(newquery) {
