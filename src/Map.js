@@ -31,23 +31,22 @@ class Map extends Component {
                         position: new window.google.maps.LatLng(place.position),
                         map: this.map,
                         title: place.title,
-                        // draggable: true,
-                        // animation: google.maps.Animation.DROP,
+                        animation: window.google.maps.Animation.DROP,
                     });
                     this.markers.push(marker);
+
+                    //*Add animation to all markers*//
+                    for(let j = 0; j < this.markers.length; j++){
+                        marker.addListener(this.markers[j], function(){
+                            this.setAnimation(window.google.maps.Animation.DROP);
+                                setTimeout(function(){
+                                    marker.setAnimation(null);
+                                },3000);
+                        });
+                    }
             });  
-            //   google.maps.addListener(marker, 'click', toggleBounce());
         }
     }
-
-    //  toggleBounce() {
-    //       if (this.getAnimation() !== null) {
-    //        this.setAnimation(null);
-    //       } else {
-    //         this.setAnimation(google.maps.Animation.BOUNCE);
-    //       }
-    //     }
-
 
     render() {
 
