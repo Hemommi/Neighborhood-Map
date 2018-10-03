@@ -39,9 +39,6 @@ class Map extends Component {
                     for(let j = 0; j < this.markers.length; j++){
                         marker.addListener(this.markers[j], function(){
                             this.setAnimation(window.google.maps.Animation.DROP);
-                                setTimeout(function(){
-                                    marker.setAnimation(null);
-                                },3000);
                         });
                     }
             });  
