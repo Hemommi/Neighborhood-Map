@@ -67,7 +67,7 @@ class Map extends Component {
 
         return(
             //*Aria application role for users with low vision*//
-            <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}} role="application" aria-hidden="true"></div> 
+            <div  ref="map"  style={{height:"calc(100% - 55px)", width:"100%"}} role="application" aria-hidden="true" tabIndex='-1'></div> 
         )
     }
 }
