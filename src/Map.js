@@ -26,8 +26,8 @@ class Map extends Component {
     addMarkers() {
         if(this.props.places){
             this.props.places.map(place => {
-                    var myPlaces=place.position
-                    let marker=new window.google.maps.Marker({
+                    var myPlaces = place.position
+                    let marker = new window.google.maps.Marker({
                         position: new window.google.maps.LatLng(place.position),
                         map: this.map,
                         title: place.title,
@@ -48,18 +48,22 @@ class Map extends Component {
     render() {
 
         //*.setVisible() method*//
-        // let places = this.props.places;
-        // let markers = this.markers;
-        //   if(this.markers.length){
-        //     markers.map(marker => {
-        //         let marker = this.markers.find(marker => {
-        //             return 
-        //     }) 
-        // })
-        //      this.markers.setVisible(true);
-        //  } else {
-        //      this.markers.setVisible(false);
-        //  }
+        let places = this.props.places;
+        let markers = this.markers;
+        let matchedPlace;
+
+        if(places){
+            markers.map(marker => {
+                matchedPlace = places.find(place => {
+                    return place.title === marker.title;
+                });
+                if(matchedPlace === undefined){
+                    marker.setVisible(false);
+                }else{
+                    marker.setVisible(true);
+                }
+            });
+        }
 
         return(
             //*Aria application role for users with low vision*//
