@@ -59,18 +59,19 @@ class Map extends Component {
             });
                 //*Open an infoWindow*//
                 marker.addListener('click', function(){
+                infoWindow.setContent(contentString);
                 infoWindow.open(this.map, marker);
             });
                 //*Close an infoWindow when click on map*//
                 this.map.addListener('click', function(){
-                    infoWindow.close();
+                infoWindow.close();
                 });
+                
         });
          
      }
 
     render() {
-
         //*.setVisible() method*//
         let places = this.props.places;
         let markers = this.markers;
@@ -88,23 +89,6 @@ class Map extends Component {
                 }
             });
         }
-
-        // let infoWindow = this.infoWindows;
-        // let matchedInfoWindow;
-        // let places = this.props.places;
-
-        // if(places){
-        //     infoWindow.map(window =>{
-        //         matchedInfoWindow = places.find(place => {
-        //             return place.title === 
-        //         });
-        //         if(matchedInfoWindow === undefind){
-        //             window.setVisible(false);
-        //         }else{
-        //             window.setVisible(true);
-        //         }
-        //     });
-        // }
 
         return(
             //*Aria application role for users with low vision*//
