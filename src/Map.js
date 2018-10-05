@@ -51,8 +51,7 @@ class Map extends Component {
         this.markers.forEach(marker =>{
             var contentString = this.place;
             let infoWindow = new window.google.maps.InfoWindow({
-                // content: 
-                content: '<p>Marker</p>'
+                content: marker.title
             });
             //*Open an infoWindow*//
                 marker.addListener('click', function(){
