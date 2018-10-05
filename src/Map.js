@@ -57,12 +57,14 @@ class Map extends Component {
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });
-                marker.addListener('click', function(){
-                infoWindow.setContent(contentString);
                 //*Open an infoWindow*//
+                marker.addListener('click', function(){
                 infoWindow.open(this.map, marker);
-                // infoWindow.setContent(contentString)
             });
+                //*Close an infoWindow when click on map*//
+                this.map.addListener('click', function(){
+                    infoWindow.close();
+                });
         });
          
      }
@@ -86,6 +88,23 @@ class Map extends Component {
                 }
             });
         }
+
+        // let infoWindow = this.infoWindows;
+        // let matchedInfoWindow;
+        // let places = this.props.places;
+
+        // if(places){
+        //     infoWindow.map(window =>{
+        //         matchedInfoWindow = places.find(place => {
+        //             return place.title === 
+        //         });
+        //         if(matchedInfoWindow === undefind){
+        //             window.setVisible(false);
+        //         }else{
+        //             window.setVisible(true);
+        //         }
+        //     });
+        // }
 
         return(
             //*Aria application role for users with low vision*//
