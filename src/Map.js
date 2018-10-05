@@ -7,6 +7,7 @@ class Map extends Component {
         super(props);
         this.map = null; 
         this.markers = [];
+        this.infoWindows = []; 
     }
     //*A decorator for script lazy loading on react component.*//
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
@@ -31,6 +32,7 @@ class Map extends Component {
                         position: new window.google.maps.LatLng(place.position),
                         map: this.map,
                         title: place.title,
+                        address: place.address,
                         animation: window.google.maps.Animation.DROP,
                     });
                     this.markers.push(marker);
@@ -49,13 +51,17 @@ class Map extends Component {
     //*Add InfoWindow to each marker*//
     addInfoWindow(){
         this.markers.forEach(marker =>{
-            var contentString = this.place;
+            var contentString = '<h6>' + marker.title + '</h6>' +
+                                '<br/>' +
+                                '<p>' + marker.address + '</p>';
             let infoWindow = new window.google.maps.InfoWindow({
-                content: marker.title
+                content: contentString,
             });
-            //*Open an infoWindow*//
                 marker.addListener('click', function(){
+                infoWindow.setContent(contentString);
+                //*Open an infoWindow*//
                 infoWindow.open(this.map, marker);
+                // infoWindow.setContent(contentString)
             });
         });
          
