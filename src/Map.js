@@ -22,12 +22,12 @@ class Map extends Component {
              near: "Charlotte, NC",
              limit: 10
          };
-
+         //*URLSearchParams method allows build query parameters using objects*//
          fetch(endpoint + new URLSearchParams(parameters), {
              method: "GET"
          }).then();
      }
-     
+
     //*A decorator for script lazy loading on react component.*//
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
         if(isScriptLoaded && !this.props.isScriptLoaded) {
