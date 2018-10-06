@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import scriptLoader from 'react-async-script-loader';
+import 'whatwg-fetch';
 
 class Map extends Component {
     //super- access the constructor method of the parent class. Props is included to access this.props inside of constructor.//
@@ -9,6 +10,24 @@ class Map extends Component {
         this.markers = [];
         this.infoWindows = []; 
     }
+
+    //*Foursquare*//
+     componentDidMount(){
+         const endpoint = 'https://api.foursquare.com/v2/venues/explore';
+
+         const parameters = {
+             client_id: "2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5",
+             client_secret: "04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0",
+             query: "things to do",
+             near: "Charlotte, NC",
+             limit: 10
+         };
+
+         fetch(endpoint + new URLSearchParams(parameters), {
+             method: "GET"
+         }).then();
+     }
+     
     //*A decorator for script lazy loading on react component.*//
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
         if(isScriptLoaded && !this.props.isScriptLoaded) {
