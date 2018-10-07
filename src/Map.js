@@ -10,6 +10,10 @@ class Map extends Component {
         this.map = null; 
         this.markers = [];
         this.infoWindows = []; 
+
+        this.state = {
+            venues: []
+          };
     }
 
     //*Foursquare*//
@@ -24,16 +28,22 @@ class Map extends Component {
 
         //*V parameter added for API changes up to this date*//
         const myParameters = {
-            clientId: "2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5",
-            clientSecret: "04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0",
-            query: "things to do",
+            client_id: "2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5",
+            client_secret: "04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0",
+            query: "tacos",
             near: "Charlotte, NC",
+            limit: 10,
             v: "20181007"
         };
         //*URLSearchParams method allows build query parameters using objects*//
         //*axios- promise-based*//
-        axios.get(endpoint + new URLSearchParams(myParameters)).then(response => {
-           console.log(response);
+        var testurl ="https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
+        var tesrr = endpoint + new URLSearchParams(myParameters);
+        axios.get(testurl).then(response => {
+            var test = response;
+            this.setState({
+               venues:  response.data.response.groups[0].items
+            })
         })
         .catch(error => {
             console.log("Error" + error);
@@ -74,14 +84,16 @@ class Map extends Component {
                             this.setAnimation(window.google.maps.Animation.DROP);
                         });
                     }
-                    this.addInfoWindow();
-            });  
+            }); 
+            this.addInfoWindow();
         }
     }
 
     //*Add InfoWindow to each marker*//
     addInfoWindow(){
         this.markers.forEach(marker =>{
+
+            //4sqr
             var contentString = '<h6>' + marker.title + '</h6>' +
                                 '<br/>' +
                                 '<p>' + marker.address + '</p>';
