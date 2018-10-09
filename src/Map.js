@@ -30,14 +30,14 @@ class Map extends Component {
         const myParameters = {
             client_id: "2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5",
             client_secret: "04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0",
-            query: "tacos",
+            query: "fun",
             near: "Charlotte, NC",
-            limit: 10,
+            limit: 100,
             v: "20181007"
         };
         //*URLSearchParams method allows build query parameters using objects*//
         //*axios- promise-based*//
-        var testurl ="https://api.foursquare.com/v2/venues/search?ll=40.7,-74&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
+        var testurl ="https://api.foursquare.com/v2/venues/search?ll=35.2247583,-80.8531362&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
         var tesrr = endpoint + new URLSearchParams(myParameters);
         axios.get(testurl).then(response => {
             var test = response;
@@ -92,11 +92,11 @@ class Map extends Component {
     //*Add InfoWindow to each marker*//
     addInfoWindow(){
         this.markers.forEach(marker =>{
-
             //4sqr
-            var contentString = '<h6>' + marker.title + '</h6>' +
+            var contentString = '<img class="info-photo">' + '<br/>' +
+                                '<h6 class="info-title">' + marker.title + '</h6>' +
                                 '<br/>' +
-                                '<p>' + marker.address + '</p>';
+                                '<p class="info-address">' + marker.address + '</p>';
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });
