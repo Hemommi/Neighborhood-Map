@@ -10,40 +10,35 @@ class Map extends Component {
         this.map = null; 
         this.markers = [];
         this.infoWindows = []; 
-
+        this.venue_id = [];
+        
         this.state = {
             venues: []
           };
     }
 
-    //*Foursquare*//
     componentDidMount(){
-        this.getVenues(); 
+        //this.getVenues("4ec01082e3005ff929d90d65"); 
     }
 
     //*getVenues method*//
-    getVenues() {
+    getVenues(place) {
 
-        const endpoint = 'https://api.foursquare.com/v2/venues/explore';
-
-        //*V parameter added for API changes up to this date*//
-        const myParameters = {
-            client_id: "2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5",
-            client_secret: "04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0",
-            query: "fun",
-            near: "Charlotte, NC",
-            limit: 100,
-            v: "20181007"
-        };
-        //*URLSearchParams method allows build query parameters using objects*//
+        const testurl ="https://api.foursquare.com/v2/venues/"+place.venue_id+"?&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
+        
+         //*URLSearchParams method allows build query parameters using objects*//
         //*axios- promise-based*//
-        var testurl ="https://api.foursquare.com/v2/venues/search?ll=35.2247583,-80.8531362&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
-        var tesrr = endpoint + new URLSearchParams(myParameters);
+         //var tesrr = endpoint + new URLSearchParams(myParameters);
         axios.get(testurl).then(response => {
-            var test = response;
+             var venue = response.data.response.venue;
+            //  this.setState({
+            //    venues:  response.data.response.groups[0].items
+            // }) 
+
             this.setState({
-               venues:  response.data.response.groups[0].items
-            })
+                venues: [...this.state.venues, venue]
+              })
+           // place.bestPhoto = response.data.response.venue.bestPhoto;
         })
         .catch(error => {
             console.log("Error" + error);
@@ -59,11 +54,19 @@ class Map extends Component {
                     zoom: 11,
                 });
                 this.addMarkers();
+                this.loadVenues();
             }else{
                 alert('Script is not loaded')
             }
         }
     }
+
+    loadVenues(venues){
+        this.props.places.map(place => {
+            this.getVenues(place);
+        });
+    }
+
     //*Markers added to the map*//
     addMarkers() {
         if(this.props.places){
@@ -85,6 +88,7 @@ class Map extends Component {
                         });
                     }
             }); 
+
             this.addInfoWindow();
         }
     }
@@ -92,7 +96,6 @@ class Map extends Component {
     //*Add InfoWindow to each marker*//
     addInfoWindow(){
         this.markers.forEach(marker =>{
-            //4sqr
             var contentString = '<img class="info-photo">' + '<br/>' +
                                 '<h6 class="info-title">' + marker.title + '</h6>' +
                                 '<br/>' +
@@ -113,7 +116,7 @@ class Map extends Component {
         });
          
      }
-
+    
     render() {
         //*.setVisible() method*//
         let places = this.props.places;
