@@ -36,7 +36,7 @@ class Search extends React.Component {
                             placeholder="Search by name"
                             value={this.state.query}
                             onChange={(event) => this.updateQuery(event.target.value)}></input>
-                        <button type="submit">go</button>
+                        {/* <button type="submit">go</button> */}
                     </div>
                  </div>
             </div>

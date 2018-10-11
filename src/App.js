@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Search from './Search'
 import PlacesList from './PlacesList'
+import ToggleSidebar from './ToggleSidebar'
 // import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 //library.add(faStroopwafel)
@@ -14,8 +15,15 @@ import PlacesList from './PlacesList'
 class App extends Component {
 
   state = {
-    places: myPlaces
+    places: myPlaces,
+    showSidebar: true,
   } 
+
+  sidebarVisibilityChange = (newState) => {
+    this.setState({
+      showSidebar: newState
+    });
+  };
 
   placesChanged = (filtredPlaces) => {
     this.setState({
@@ -26,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <nav id="sidebar">
+        <nav id="sidebar" className={this.state.showSidebar ? "active" : ""}>
         <div className="sidebar-title">
             <h3>Neighborhood Map</h3>
         </div>
@@ -35,12 +43,7 @@ class App extends Component {
         </nav>
         <div id="content">
           <nav className="navbar">
-              <div className="container-fluid">
-                  <button type="button" id="toggleSidebar" className="btn btn-info">
-                      <i className="fas fa-align-left"></i>
-                      <span>Toggle Sidebar</span>
-                  </button>
-              </div>
+            <ToggleSidebar sidebarVisibilityChange={this.sidebarVisibilityChange }/>
           </nav>
           <Map places={this.state.places} />
         </div>
