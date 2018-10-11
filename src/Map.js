@@ -62,9 +62,10 @@ class Map extends Component {
     }
 
     loadVenues(venues){
-        this.props.places.map(place => {
+       /*  this.props.places.map(place => {
             this.getVenues(place);
-        });
+        }); */
+        this.getVenues(this.props.places[0]);
     }
 
     //*Markers added to the map*//
@@ -105,9 +106,9 @@ class Map extends Component {
             });
                 //*Open an infoWindow*//
                 marker.addListener('click', function(){
-                infoWindow.setContent(contentString);
-                infoWindow.open(this.map, marker);
-            });
+                    infoWindow.setContent(contentString);
+                    infoWindow.open(this.map, marker);
+                }); 
                 //*Close an infoWindow when click on map*//
                 this.map.addListener('click', function(){
                 infoWindow.close();

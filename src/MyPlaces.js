@@ -15,7 +15,7 @@ export const myPlaces = [
         title: "Daniel Stowe Botanical Garden",
         position: {lat:35.1682438, lng: -81.0585699},
         address: "6500 S New Hope Rd, Belmont, NC 28012",
-        venue_id: "4b05863df964a520b35922e3"
+        venue_id: "4b05863df964a520b35922e3",
     },
     {
         title: "Carolinas Aviation Museum",

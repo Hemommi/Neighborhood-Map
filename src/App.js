@@ -34,7 +34,7 @@ class App extends Component {
         <PlacesList places={this.state.places}/>
         </nav>
         <div id="content">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar">
               <div className="container-fluid">
                   <button type="button" id="toggleSidebar" className="btn btn-info">
                       <i className="fas fa-align-left"></i>
