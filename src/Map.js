@@ -72,23 +72,20 @@ class Map extends Component {
 
     createMarker(place, venue) {
      
-                    let marker = new window.google.maps.Marker({
-                        position: new window.google.maps.LatLng(place.position),
-                        map: this.map,
-                        title: place.title,
-                        address: place.address,
-                        animation: window.google.maps.Animation.DROP,
-                    });
-                    this.markers.push(marker);
+        let marker = new window.google.maps.Marker({
+            position: new window.google.maps.LatLng(place.position),
+            map: this.map,
+            title: place.title,
+            address: place.address,
+            animation: window.google.maps.Animation.DROP,
+        });
+            this.markers.push(marker);
 
-                  
-                   
-                        marker.addListener(marker, function(){
-                            this.setAnimation(window.google.maps.Animation.DROP);
-                        });
-                    
-           
-                        this.addInfoWindow(marker, venue);
+            marker.addListener(marker, function(){
+            this.setAnimation(window.google.maps.Animation.DROP);
+            });
+            
+            this.addInfoWindow(marker, venue);
         
     }
 
@@ -121,12 +118,14 @@ class Map extends Component {
     //*Add InfoWindow to each marker*//
     addInfoWindow(marker, venue){
         //this.markers.forEach(marker =>{
-            var contentString = '<img class="info-photo">' + '<br/>' +
+            var contentString = '<img class="info-photo" src=' + venue.bestPhoto + '><br/>' +
                                 '<h6 class="info-title">' + marker.title + '</h6>' +
                                 '<br/>' +
                                 '<p class="info-address">' + marker.address + '</p>'+
                                 '<br/>' +
-                                '<p class="info-address">' + venue.description + '</p>';
+                                '<p class="info-description">' + venue.description + '</p>'+
+                                '<br/>'+
+                                '<p class="info-phone">' + venue.contact.formattedPhone + '</p>';
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });

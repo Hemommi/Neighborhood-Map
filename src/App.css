@@ -90,6 +90,33 @@ h3 {
   font-size: 28px;
 }
 
-.navbar{
+.navbar {
   background: rgb(221, 219, 219);
+}
+
+.info-photo {
+  width: 200px;
+  height: 150px;
+  margin-left: 10px;
+  margin-right: 2px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.info-title {
+  text-align: left;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+
+}
+
+.info-phone {
+  text-align: center;
+}
+
+.info-address {
+  margin-left: 8px;
 }
