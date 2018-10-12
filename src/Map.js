@@ -21,8 +21,31 @@ class Map extends Component {
         //this.getVenues("4ec01082e3005ff929d90d65"); 
     }
 
+    //*A decorator for script lazy loading on react component.*//
+    componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
+        if(isScriptLoaded && !this.props.isScriptLoaded) {
+            if(isScriptLoadSucceed) {
+                this.map = new window.google.maps.Map(this.refs.map, {
+                    center: {lat: 35.2247583, lng: -80.8531362},
+                    zoom: 11,
+                }); 
+                //this.addMarkers();
+                this.loadVenues();
+            }else{
+                alert('Script is not loaded')
+            }
+        }
+    }
+
+    loadVenues(venues){
+       /*  this.props.places.map(place => {
+            this.getVenue(place);
+        }); */
+        this.getVenue(this.props.places[0]);
+    }
+
     //*getVenues method*//
-    getVenues(place) {
+    getVenue(place) {
 
         const testurl ="https://api.foursquare.com/v2/venues/"+place.venue_id+"?&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
         
@@ -38,6 +61,8 @@ class Map extends Component {
             this.setState({
                 venues: [...this.state.venues, venue]
               })
+              this.createMarker(place, venue);
+              
            // place.bestPhoto = response.data.response.venue.bestPhoto;
         })
         .catch(error => {
@@ -45,27 +70,26 @@ class Map extends Component {
         });
     }
 
-    //*A decorator for script lazy loading on react component.*//
-    componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
-        if(isScriptLoaded && !this.props.isScriptLoaded) {
-            if(isScriptLoadSucceed) {
-                this.map = new window.google.maps.Map(this.refs.map, {
-                    center: {lat: 35.2247583, lng: -80.8531362},
-                    zoom: 11,
-                });
-                this.addMarkers();
-                this.loadVenues();
-            }else{
-                alert('Script is not loaded')
-            }
-        }
-    }
+    createMarker(place, venue) {
+     
+                    let marker = new window.google.maps.Marker({
+                        position: new window.google.maps.LatLng(place.position),
+                        map: this.map,
+                        title: place.title,
+                        address: place.address,
+                        animation: window.google.maps.Animation.DROP,
+                    });
+                    this.markers.push(marker);
 
-    loadVenues(venues){
-       /*  this.props.places.map(place => {
-            this.getVenues(place);
-        }); */
-        this.getVenues(this.props.places[0]);
+                  
+                   
+                        marker.addListener(marker, function(){
+                            this.setAnimation(window.google.maps.Animation.DROP);
+                        });
+                    
+           
+                        this.addInfoWindow(marker, venue);
+        
     }
 
     //*Markers added to the map*//
@@ -90,17 +114,19 @@ class Map extends Component {
                     }
             }); 
 
-            this.addInfoWindow();
+            //this.addInfoWindow();
         }
     }
 
     //*Add InfoWindow to each marker*//
-    addInfoWindow(){
-        this.markers.forEach(marker =>{
+    addInfoWindow(marker, venue){
+        //this.markers.forEach(marker =>{
             var contentString = '<img class="info-photo">' + '<br/>' +
                                 '<h6 class="info-title">' + marker.title + '</h6>' +
                                 '<br/>' +
-                                '<p class="info-address">' + marker.address + '</p>';
+                                '<p class="info-address">' + marker.address + '</p>'+
+                                '<br/>' +
+                                '<p class="info-address">' + venue.description + '</p>';
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });
@@ -111,10 +137,10 @@ class Map extends Component {
                 }); 
                 //*Close an infoWindow when click on map*//
                 this.map.addListener('click', function(){
-                infoWindow.close();
+                    infoWindow.close();
                 });
                 
-        });
+       // });
          
      }
     
