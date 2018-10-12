@@ -96,7 +96,7 @@ h3 {
 
 .info-photo {
   width: 200px;
-  height: 150px;
+  height: 170px;
   margin-left: 10px;
   margin-right: 2px;
   margin-top: 5px;
@@ -120,3 +120,8 @@ h3 {
 .info-address {
   margin-left: 8px;
 }
+
+.info-description {
+  margin-left: 8px;
+}
+

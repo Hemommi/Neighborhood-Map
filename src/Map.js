@@ -118,7 +118,7 @@ class Map extends Component {
     //*Add InfoWindow to each marker*//
     addInfoWindow(marker, venue){
         //this.markers.forEach(marker =>{
-            var contentString = '<img class="info-photo" src=' + venue.bestPhoto + '><br/>' +
+            var contentString = '<img class="info-photo" src=' + venue.bestPhoto.prefix + "500x500" +venue.bestPhoto.suffix +'><br/>' +
                                 '<h6 class="info-title">' + marker.title + '</h6>' +
                                 '<br/>' +
                                 '<p class="info-address">' + marker.address + '</p>'+
