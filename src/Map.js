@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import scriptLoader from 'react-async-script-loader';
-// import 'whatwg-fetch';
 import axios from'axios';
 
 class Map extends Component {
@@ -123,7 +122,7 @@ class Map extends Component {
                                 '<br/>' +
                                 '<p class="info-address">' + marker.address + '</p>'+
                                 '<br/>' +
-                                '<p class="info-description">' + venue.description + '</p>'+
+                                '<p class="info-description">' + venue.description +'</p>'+
                                 '<br/>'+
                                 '<p class="info-phone">' + venue.contact.formattedPhone + '</p>';
             let infoWindow = new window.google.maps.InfoWindow({

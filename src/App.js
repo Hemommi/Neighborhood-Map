@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Search from './Search'
 import PlacesList from './PlacesList'
 import ToggleSidebar from './ToggleSidebar'
-// import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+ //import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 //library.add(faStroopwafel)
 
