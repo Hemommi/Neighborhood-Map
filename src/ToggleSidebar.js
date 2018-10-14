@@ -24,7 +24,7 @@ class ToogleSidebar extends Component {
             <div className="container-fluid">
                 <button type="button" id="toggleSidebarButton" className="btn btn-info" onClick={this.handleClick}>
                     <i className="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
+                    <span>Toggle</span>
                 </button>
             </div>
           

@@ -124,7 +124,7 @@ class Map extends Component {
                                 '<br/>' +
                                 '<p class="info-description">' + venue.description +'</p>'+
                                 '<br/>'+
-                                '<p class="info-phone">' + venue.contact.formattedPhone + '</p>';
+                                '<p class="info-phone">' + venue.contact.formattedPhone + '</p>'
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });
