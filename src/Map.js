@@ -3,7 +3,6 @@ import scriptLoader from 'react-async-script-loader';
 import axios from'axios';
 
 class Map extends Component {
-    //super- access the constructor method of the parent class. Props is included to access this.props inside of constructor.//
     constructor(props) {
         super(props);
         this.map = null; 
@@ -16,11 +15,7 @@ class Map extends Component {
           };
     }
 
-    componentDidMount(){
-        //this.getVenues("4ec01082e3005ff929d90d65"); 
-    }
-
-    //*A decorator for script lazy loading on react component.*//
+    //*Loading google map*///
     componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
         if(isScriptLoaded && !this.props.isScriptLoaded) {
             if(isScriptLoadSucceed) {
@@ -28,7 +23,6 @@ class Map extends Component {
                     center: {lat: 35.2247583, lng: -80.8531362},
                     zoom: 11,
                 }); 
-                //this.addMarkers();
                 this.loadVenues();
             }else{
                 alert('Script is not loaded')
@@ -36,41 +30,31 @@ class Map extends Component {
         }
     }
 
+    //*Downloading venues to all places*///
     loadVenues(venues){
        /*  this.props.places.map(place => {
             this.getVenue(place);
         }); */
         this.getVenue(this.props.places[0]);
     }
-
-    //*getVenues method*//
+    //*Forsquer url with client_id, client_secret. *///
     getVenue(place) {
-
-        const testurl ="https://api.foursquare.com/v2/venues/"+place.venue_id+"?&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
-        
-         //*URLSearchParams method allows build query parameters using objects*//
-        //*axios- promise-based*//
-         //var tesrr = endpoint + new URLSearchParams(myParameters);
-        axios.get(testurl).then(response => {
-             var venue = response.data.response.venue;
-            //  this.setState({
-            //    venues:  response.data.response.groups[0].items
-            // }) 
+        const url ="https://api.foursquare.com/v2/venues/"+place.venue_id+"?&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
+        axios.get(url).then(response => {
+            var venue = response.data.response.venue;
 
             this.setState({
                 venues: [...this.state.venues, venue]
-              })
-              this.createMarker(place, venue);
-              
-           // place.bestPhoto = response.data.response.venue.bestPhoto;
+            })
+            this.createMarker(place, venue);
         })
         .catch(error => {
             console.log("Error" + error);
         });
     }
 
+    //*Creating google marker for given place*///
     createMarker(place, venue) {
-     
         let marker = new window.google.maps.Marker({
             position: new window.google.maps.LatLng(place.position),
             map: this.map,
@@ -78,45 +62,15 @@ class Map extends Component {
             address: place.address,
             animation: window.google.maps.Animation.DROP,
         });
-            this.markers.push(marker);
-
-            marker.addListener(marker, function(){
+        this.markers.push(marker);
+        marker.addListener(marker, function(){
             this.setAnimation(window.google.maps.Animation.DROP);
-            });
-            
-            this.addInfoWindow(marker, venue);
-        
+        });
+        this.addInfoWindow(marker, venue);
     }
 
-    //*Markers added to the map*//
-    addMarkers() {
-        if(this.props.places){
-            this.props.places.map(place => {
-                    var myPlaces = place.position
-                    let marker = new window.google.maps.Marker({
-                        position: new window.google.maps.LatLng(place.position),
-                        map: this.map,
-                        title: place.title,
-                        address: place.address,
-                        animation: window.google.maps.Animation.DROP,
-                    });
-                    this.markers.push(marker);
-
-                    //*Add animation to all markers*//
-                    for(let j = 0; j < this.markers.length; j++){
-                        marker.addListener(this.markers[j], function(){
-                            this.setAnimation(window.google.maps.Animation.DROP);
-                        });
-                    }
-            }); 
-
-            //this.addInfoWindow();
-        }
-    }
-
-    //*Add InfoWindow to each marker*//
+    //*Add InfoWindow to each marker with title, address, phone number and photo*//
     addInfoWindow(marker, venue){
-        //this.markers.forEach(marker =>{
             var contentString = '<img class="info-photo" src=' + venue.bestPhoto.prefix + "500x500" +venue.bestPhoto.suffix +'><br/>' +
                                 '<h6 class="info-title">' + marker.title + '</h6>' +
                                 '<br/>' +
@@ -128,22 +82,18 @@ class Map extends Component {
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });
-                //*Open an infoWindow*//
-                marker.addListener('click', function(){
-                    infoWindow.setContent(contentString);
-                    infoWindow.open(this.map, marker);
-                }); 
-                //*Close an infoWindow when click on map*//
-                this.map.addListener('click', function(){
-                    infoWindow.close();
-                });
-                
-       // });
-         
+            //*Open an infoWindow*//
+            marker.addListener('click', function(){
+                infoWindow.setContent(contentString);
+                infoWindow.open(this.map, marker);
+            }); 
+            //*Close infoWindow when click on map*//
+            this.map.addListener('click', function(){
+                infoWindow.close();
+            });
      }
-    
+
     render() {
-        //*.setVisible() method*//
         let places = this.props.places;
         let markers = this.markers;
         let matchedPlace;

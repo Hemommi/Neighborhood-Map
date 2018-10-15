@@ -59,7 +59,6 @@
 button {
   width: 20%;
   padding: 5px;
-  background: rgb(53, 172, 202);
   margin: 5px;
   color: white;
   font-size: 17px;
@@ -75,8 +74,8 @@ input {
   background: #f1f1f1;
 }
 #places-list {
-  background-color:rgb(42, 91, 163);
-  font-size: 16px;
+  background-color:rgb(62, 90, 131);
+  font-size: 17px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 3px;
@@ -88,6 +87,7 @@ input {
 h3 {
   color: rgb(44, 43, 43);
   font-size: 28px;
+  font-family: Helvetica, Arial, Sans-Serif;
 }
 
 .navbar {
@@ -99,7 +99,7 @@ h3 {
   height: 170px;
   margin-left: 10px;
   margin-right: 2px;
-  margin-top: 5px;
+  margin-top: 8px;
   margin-bottom: 15px;
 }
 
@@ -129,6 +129,10 @@ h3 {
   margin-left: 8px;
 }
 
+.toggle {
+  background-color: rgb(73, 113, 173);
+}
+
 /*Media queries*/
 
 @media screen and (min-width: 501px) and (max-width: 768px) {
@@ -151,7 +155,6 @@ h3 {
   span {
     font-size: 11px;
   }
-  
 }
 
 @media screen and (max-width: 500px) {

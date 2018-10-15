@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Map from './Map';
 import {myPlaces} from './MyPlaces'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Search from './Search'
 import PlacesList from './PlacesList'
 import ToggleSidebar from './ToggleSidebar'
- //import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
-
-//library.add(faStroopwafel)
 
 class App extends Component {
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
 
 class Search extends React.Component {
     
@@ -13,7 +12,6 @@ class Search extends React.Component {
         this.filterPlaces(newquery);
     }
 
-    //*Filter Places*//
     filterPlaces=(newquery) => {
         let newPlaces;
         if(newquery) {
@@ -35,8 +33,8 @@ class Search extends React.Component {
                             type="text" 
                             placeholder="Search by name"
                             value={this.state.query}
-                            onChange={(event) => this.updateQuery(event.target.value)}></input>
-                        {/* <button type="submit">go</button> */}
+                            onChange={(event) => this.updateQuery(event.target.value)}>
+                        </input>
                     </div>
                  </div>
             </div>
