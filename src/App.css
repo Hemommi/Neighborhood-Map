@@ -95,34 +95,40 @@ h3 {
 }
 
 .info-photo {
-  width: 205px;
-  height: 170px;
+  width: 180px;
+  height: 150px;
   margin-left: 10px;
-  margin-right: 2px;
-  margin-top: 8px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .info-title {
-  text-align: left;
+  /* text-align: left; */
   letter-spacing: 1px;
   margin-top: 5px;
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  text-align: center;
 
 }
 
 .info-phone {
   text-align: center;
+  font-size: 12px;
   font-weight: bold;
-  font-size: 14px;
 }
 
 .info-address {
-  margin-left: 8px;
+  margin-left: 10px;
+  font-size: 12px;
+  text-align: center;
   font-weight: bold;
-  font-size: 14px;
+}
+
+#infoWindow {
+  width: 200px;
+  height: 340px;
 }
 
 .toggle {
@@ -153,7 +159,7 @@ h3 {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 455px) and (max-width: 500px) {
   #sidebar {
     min-width: 180px;
     max-width: 180px;
