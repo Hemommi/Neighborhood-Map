@@ -72,12 +72,10 @@ class Map extends Component {
     //*Add InfoWindow to each marker with title, address, phone number and photo*//
     addInfoWindow(marker, venue){
             var contentString = '<img class="info-photo" src=' + venue.bestPhoto.prefix + "500x500" +venue.bestPhoto.suffix +'><br/>' +
-                                '<h6 class="info-title">' + marker.title + '</h6>' +
+                                '<h6 class="info-title">' + venue.name + '</h6>' +
                                 '<br/>' +
-                                '<p class="info-address">' + marker.address + '</p>'+
+                                '<p class="info-address">' + venue.location.formattedAddress + '</p>'+
                                 '<br/>' +
-                                '<p class="info-description">' + venue.description +'</p>'+
-                                '<br/>'+
                                 '<p class="info-phone">' + venue.contact.formattedPhone + '</p>'
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
