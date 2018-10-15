@@ -41,8 +41,8 @@
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: rgb(221, 219, 219);
-  color: rgb(250, 249, 249);
+  background: #DDDBDB;
+  color: #FAF9F9;
   transition: all 0.4s;
   text-align: center;
 }
@@ -62,36 +62,36 @@ button {
   margin: 5px;
   color: white;
   font-size: 17px;
-  border: 1px solid rgb(82, 82, 82);
+  border: 1px solid #525252;
   cursor: pointer;
 }
 input {
   padding: 10px;
   font-size: 18px;
-  border: 1px solid rgb(70, 69, 69);
+  border: 1px solid #464545;
   margin: 5px;
   width: 93.5%;
   background: #f1f1f1;
 }
 #places-list {
-  background-color:rgb(62, 90, 131);
+  background-color:#3E5A83;
   font-size: 17px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 3px;
 }
 .content {
-  background-color: rgb(138, 138, 138);
+  background-color: #8A8A8A
 }
 
 h3 {
-  color: rgb(44, 43, 43);
+  color: #2C2B2B;
   font-size: 28px;
   font-family: Helvetica, Arial, Sans-Serif;
 }
 
 .navbar {
-  background: rgb(221, 219, 219);
+  background: #DDDBDB
 }
 
 .info-photo {
@@ -132,7 +132,7 @@ h3 {
 }
 
 .toggle {
-  background-color: rgb(73, 113, 173);
+  background-color: #4971AD
 }
 
 /*Media queries*/

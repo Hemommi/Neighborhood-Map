@@ -12,6 +12,7 @@ class Search extends React.Component {
         this.filterPlaces(newquery);
     }
 
+    //*If new query is enteing, the places are filtered and selected only those the best match the given place*///
     filterPlaces=(newquery) => {
         let newPlaces;
         if(newquery) {
