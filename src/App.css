@@ -157,6 +157,10 @@ h3 {
   span {
     font-size: 11px;
   }
+
+  .toggle {
+    margin-left: 20px
+  }
 }
 
 @media screen and (min-width: 455px) and (max-width: 500px) {
@@ -173,11 +177,42 @@ h3 {
     font-size: 12px;
   }
 
-  input {
-    font-size: 14px;
+  #places-list {
+    font-size: 12px;
   }
 
   span {
-    font-size: 10px;
+    font-size: 8px;
+  }
+
+  .toggle {
+    margin-left: 20px
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 455px) {
+  #sidebar {
+    min-width: 160px;
+    max-width: 160px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  #places-list {
+    font-size: 12px;
+  }
+
+  #places-list {
+    font-size: 12px;
+  }
+
+  span {
+    font-size: 5px;
+  }
+
+  .toggle {
+    margin-left: 20px
   }
 }

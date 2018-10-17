@@ -32,11 +32,13 @@ class Map extends Component {
 
     //*Downloading venues to all places*///
     loadVenues(venues){
-       /*  this.props.places.map(place => {
+        this.props.places.map(place => {
             this.getVenue(place);
-        }); */
-        this.getVenue(this.props.places[0]);
+        });
+        //For testing
+        //this.getVenue(this.props.places[6]);
     }
+
     //*Forsquer url with client_id, client_secret. *///
     getVenue(place) {
         const url ="https://api.foursquare.com/v2/venues/"+place.venue_id+"?&client_id=2RQ0EBUNQGMO32XYW5FECM1DPGIXMAXY1AXBSN2LHM1PZFB5&client_secret=04EIRAYHI2QHP4KJ3RWMSDBCSS3ERDF0ROS0BHYT4GT0WCC0&v=20181007";
@@ -77,7 +79,7 @@ class Map extends Component {
                                 '<br/>' +
                                 '<p class="info-address">' + venue.location.formattedAddress + '</p>'+
                                 '<br/>' +
-                                '<p class="info-phone">' + venue.contact.formattedPhone + '</p>' +'</div>'
+                                '<p class="info-phone">' + (venue.contact.formattedPhone === undefined ? '': venue.contact.formattedPhone) + '</p>' +'</div>'
             let infoWindow = new window.google.maps.InfoWindow({
                 content: contentString,
             });
